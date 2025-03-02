@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, GraduationCap, Code, Flask, PieChart, Globe } from 'lucide-react';
+import { BookOpen, GraduationCap, Code, Beaker, PieChart, Globe } from 'lucide-react';
 
 const ProgramCard = ({ 
   title, 
@@ -66,7 +66,7 @@ const Programs = () => {
       description: "Research-focused program examining environmental challenges and developing innovative solutions for sustainability and conservation.",
       duration: "3-5 Years",
       level: "Doctorate",
-      icon: Flask
+      icon: Beaker
     },
     {
       title: "Master of International Relations",
