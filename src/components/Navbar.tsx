@@ -71,7 +71,7 @@ const Navbar = () => {
                 </Button>
               </Link>
             ) : (
-              <Link to="/admin-login">
+              <Link to="/admin">
                 <Button variant="ghost" className="text-sm font-medium" size="sm">
                   Admin
                 </Button>
@@ -117,7 +117,7 @@ const Navbar = () => {
                   Dashboard
                 </Link>
               ) : (
-                <Link to="/admin-login" className="px-2 py-1 text-base font-medium text-milton-600">
+                <Link to="/admin" className="px-2 py-1 text-base font-medium text-milton-600">
                   Admin
                 </Link>
               )}
