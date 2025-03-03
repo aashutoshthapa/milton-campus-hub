@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import AdminFacultyManager from '@/components/AdminFacultyManager';
+import AdminNoticeForm from '@/components/AdminNoticeForm';
 
 const Admin = () => {
   const { isAuthenticated, login, logout } = useAuth();
@@ -110,8 +111,7 @@ const Admin = () => {
                 <CardDescription>Add, edit or remove notices that appear on the homepage</CardDescription>
               </CardHeader>
               <CardContent>
-                {/* Placeholder for notice management component */}
-                <p>Notice management will be implemented here</p>
+                <AdminNoticeForm />
               </CardContent>
             </Card>
           </TabsContent>
@@ -123,7 +123,7 @@ const Admin = () => {
                 <CardDescription>Manage the programs and courses offered by the college</CardDescription>
               </CardHeader>
               <CardContent>
-                {/* Placeholder for programs management component */}
+                {/* Will implement program management later */}
                 <p>Programs management will be implemented here</p>
               </CardContent>
             </Card>

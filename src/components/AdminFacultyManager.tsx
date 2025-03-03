@@ -19,7 +19,7 @@ const AdminFacultyManager = () => {
   const [facultyMembers, setFacultyMembers] = useState<FacultyMember[]>(() => {
     // Load from localStorage if available
     const saved = localStorage.getItem('facultyMembers');
-    return saved ? JSON.parse(saved) : [
+    const defaultMembers = [
       {
         id: '1',
         name: 'Dr. Sarah Johnson',
@@ -35,6 +35,13 @@ const AdminFacultyManager = () => {
         bio: 'Professor Rodriguez is an expert in international business with a focus on emerging markets.'
       }
     ];
+    
+    try {
+      return saved ? JSON.parse(saved) : defaultMembers;
+    } catch (error) {
+      console.error("Error parsing faculty data:", error);
+      return defaultMembers;
+    }
   });
 
   const [isEditing, setIsEditing] = useState<string | null>(null);
@@ -49,8 +56,17 @@ const AdminFacultyManager = () => {
 
   // Save to localStorage whenever faculty list changes
   useEffect(() => {
-    localStorage.setItem('facultyMembers', JSON.stringify(facultyMembers));
-  }, [facultyMembers]);
+    try {
+      localStorage.setItem('facultyMembers', JSON.stringify(facultyMembers));
+    } catch (error) {
+      console.error("Error saving faculty data:", error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to save faculty data. Please try again.",
+      });
+    }
+  }, [facultyMembers, toast]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -99,25 +115,34 @@ const AdminFacultyManager = () => {
       return;
     }
 
-    const newMember: FacultyMember = {
-      ...formData,
-      id: Date.now().toString(),
-      photo: formData.photo || 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&auto=format&fit=crop&q=60'
-    };
+    try {
+      const newMember: FacultyMember = {
+        ...formData,
+        id: Date.now().toString(),
+        photo: formData.photo || 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&auto=format&fit=crop&q=60'
+      };
 
-    setFacultyMembers(prev => [...prev, newMember]);
-    setIsAdding(false);
-    setFormData({
-      name: '',
-      title: '',
-      photo: '',
-      bio: ''
-    });
+      setFacultyMembers(prev => [...prev, newMember]);
+      setIsAdding(false);
+      setFormData({
+        name: '',
+        title: '',
+        photo: '',
+        bio: ''
+      });
 
-    toast({
-      title: "Faculty Member Added",
-      description: "The new faculty member has been successfully added.",
-    });
+      toast({
+        title: "Faculty Member Added",
+        description: "The new faculty member has been successfully added.",
+      });
+    } catch (error) {
+      console.error("Error adding faculty member:", error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to add faculty member. Please try again.",
+      });
+    }
   };
 
   const handleUpdateMember = () => {
@@ -133,19 +158,28 @@ const AdminFacultyManager = () => {
       return;
     }
 
-    setFacultyMembers(prev => 
-      prev.map(member => 
-        member.id === isEditing 
-          ? { ...member, ...formData } 
-          : member
-      )
-    );
-    
-    setIsEditing(null);
-    toast({
-      title: "Faculty Member Updated",
-      description: "The faculty member has been successfully updated.",
-    });
+    try {
+      setFacultyMembers(prev => 
+        prev.map(member => 
+          member.id === isEditing 
+            ? { ...member, ...formData } 
+            : member
+        )
+      );
+      
+      setIsEditing(null);
+      toast({
+        title: "Faculty Member Updated",
+        description: "The faculty member has been successfully updated.",
+      });
+    } catch (error) {
+      console.error("Error updating faculty member:", error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to update faculty member. Please try again.",
+      });
+    }
   };
 
   const cancelForm = () => {

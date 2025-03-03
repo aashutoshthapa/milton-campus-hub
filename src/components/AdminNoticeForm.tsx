@@ -6,8 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { toast } from 'sonner';
-import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/components/ui/use-toast';
 
 interface Notice {
   id: number;
@@ -19,7 +18,6 @@ interface Notice {
 }
 
 const AdminNoticeForm = () => {
-  const { isAuthenticated } = useAuth();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [date, setDate] = useState('');
@@ -27,6 +25,7 @@ const AdminNoticeForm = () => {
   const [category, setCategory] = useState('academic');
   const [notices, setNotices] = useState<Notice[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const { toast } = useToast();
   
   useEffect(() => {
     // Load notices from localStorage
@@ -40,7 +39,11 @@ const AdminNoticeForm = () => {
     e.preventDefault();
     
     if (!title || !content || !date || !time) {
-      toast.error('Please fill in all required fields');
+      toast({
+        variant: "destructive",
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+      });
       return;
     }
     
@@ -54,7 +57,10 @@ const AdminNoticeForm = () => {
       
       setNotices(updatedNotices);
       localStorage.setItem('miltonNotices', JSON.stringify(updatedNotices));
-      toast.success('Notice updated successfully');
+      toast({
+        title: "Notice Updated",
+        description: "The notice has been successfully updated.",
+      });
     } else {
       // Add new notice
       const newNotice = {
@@ -69,7 +75,10 @@ const AdminNoticeForm = () => {
       const updatedNotices = [newNotice, ...notices];
       setNotices(updatedNotices);
       localStorage.setItem('miltonNotices', JSON.stringify(updatedNotices));
-      toast.success('Notice added successfully');
+      toast({
+        title: "Notice Added",
+        description: "The new notice has been successfully added.",
+      });
     }
     
     // Reset form
@@ -94,7 +103,10 @@ const AdminNoticeForm = () => {
       const updatedNotices = notices.filter(notice => notice.id !== id);
       setNotices(updatedNotices);
       localStorage.setItem('miltonNotices', JSON.stringify(updatedNotices));
-      toast.success('Notice deleted successfully');
+      toast({
+        title: "Notice Deleted",
+        description: "The notice has been successfully deleted.",
+      });
     }
   };
   
@@ -106,16 +118,6 @@ const AdminNoticeForm = () => {
     setCategory('academic');
     setEditingId(null);
   };
-  
-  if (!isAuthenticated) {
-    return (
-      <div className="flex items-center justify-center p-8">
-        <p className="text-center text-muted-foreground">
-          You must be logged in to access this page.
-        </p>
-      </div>
-    );
-  }
   
   return (
     <div className="space-y-8">
