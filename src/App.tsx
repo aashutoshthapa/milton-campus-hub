@@ -10,6 +10,7 @@ import Admin from "./pages/Admin";
 import Contact from "./pages/Contact";
 import Programs from "./pages/Programs";
 import About from "./pages/About";
+import Faculty from "./pages/Faculty";
 import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/about" element={<About />} />
+            <Route path="/faculty" element={<Faculty />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
