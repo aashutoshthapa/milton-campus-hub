@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
+import Logo from '@/components/Logo';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,10 +45,7 @@ const Navbar = () => {
     )}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="font-display font-bold text-2xl">Milton</span>
-            <span className="font-display text-milton-600">College</span>
-          </Link>
+          <Logo />
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
@@ -56,8 +54,8 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path} 
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-milton-600",
-                  location.pathname === link.path ? "text-milton-600" : "text-foreground"
+                  "text-sm font-medium transition-colors hover:text-milton-red",
+                  location.pathname === link.path ? "text-milton-red" : "text-foreground"
                 )}
               >
                 {link.name}
@@ -104,8 +102,8 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path} 
                   className={cn(
-                    "px-2 py-1 text-base font-medium transition-colors hover:text-milton-600",
-                    location.pathname === link.path ? "text-milton-600" : "text-foreground"
+                    "px-2 py-1 text-base font-medium transition-colors hover:text-milton-red",
+                    location.pathname === link.path ? "text-milton-red" : "text-foreground"
                   )}
                 >
                   {link.name}
@@ -113,11 +111,11 @@ const Navbar = () => {
               ))}
               
               {isAuthenticated ? (
-                <Link to="/admin" className="px-2 py-1 text-base font-medium text-milton-600">
+                <Link to="/admin" className="px-2 py-1 text-base font-medium text-milton-red">
                   Dashboard
                 </Link>
               ) : (
-                <Link to="/admin" className="px-2 py-1 text-base font-medium text-milton-600">
+                <Link to="/admin" className="px-2 py-1 text-base font-medium text-milton-red">
                   Admin
                 </Link>
               )}

@@ -19,7 +19,7 @@ const Index = () => {
         <FeaturedPrograms />
         
         {/* Stats Section */}
-        <section className="py-16 bg-milton-900 text-white">
+        <section className="py-16 bg-milton-blue text-white">
           <div className="container">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Milton by the Numbers</h2>
@@ -30,19 +30,19 @@ const Index = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-display font-bold text-white">40+</div>
+                <div className="text-4xl md:text-5xl font-display font-bold text-milton-red">40+</div>
                 <p className="text-white/70">Programs Offered</p>
               </div>
               <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-display font-bold text-white">5,000+</div>
+                <div className="text-4xl md:text-5xl font-display font-bold text-milton-red">5,000+</div>
                 <p className="text-white/70">Students Enrolled</p>
               </div>
               <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-display font-bold text-white">300+</div>
+                <div className="text-4xl md:text-5xl font-display font-bold text-milton-red">300+</div>
                 <p className="text-white/70">Faculty Members</p>
               </div>
               <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-display font-bold text-white">95%</div>
+                <div className="text-4xl md:text-5xl font-display font-bold text-milton-red">95%</div>
                 <p className="text-white/70">Graduate Employment Rate</p>
               </div>
             </div>
@@ -61,7 +61,7 @@ const Index = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="p-6 rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
-                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-700 mb-4">
+                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-blue mb-4">
                   <GraduationCap className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Academic Excellence</h3>
@@ -71,7 +71,7 @@ const Index = () => {
               </div>
               
               <div className="p-6 rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
-                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-700 mb-4">
+                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-blue mb-4">
                   <BookOpen className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Innovative Curriculum</h3>
@@ -81,7 +81,7 @@ const Index = () => {
               </div>
               
               <div className="p-6 rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
-                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-700 mb-4">
+                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-blue mb-4">
                   <HeartHandshake className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Supportive Community</h3>
@@ -91,7 +91,7 @@ const Index = () => {
               </div>
               
               <div className="p-6 rounded-lg border bg-white shadow-sm transition-all hover:shadow-md">
-                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-700 mb-4">
+                <div className="inline-flex items-center justify-center p-3 rounded-full bg-milton-100 text-milton-blue mb-4">
                   <Globe className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Global Perspective</h3>
@@ -103,7 +103,7 @@ const Index = () => {
             
             <div className="text-center mt-12">
               <Link to="/about">
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="border-milton-blue text-milton-blue hover:bg-milton-blue/5">
                   Learn More About Milton
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -113,7 +113,7 @@ const Index = () => {
         </section>
         
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-milton-800 to-milton-900 text-white">
+        <section className="py-16 bg-gradient-to-r from-milton-blue to-milton-600 text-white">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center space-y-6">
               <h2 className="text-3xl md:text-4xl font-display font-bold">Ready to Begin Your Academic Journey?</h2>
@@ -122,7 +122,7 @@ const Index = () => {
               </p>
               <div className="flex flex-wrap justify-center gap-4 pt-4">
                 <Link to="/programs">
-                  <Button size="lg" className="bg-white text-milton-800 hover:bg-white/90">
+                  <Button size="lg" className="bg-milton-red text-white hover:bg-milton-red/90">
                     Explore Programs
                   </Button>
                 </Link>

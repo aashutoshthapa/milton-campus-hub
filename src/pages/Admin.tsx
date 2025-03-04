@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import AdminFacultyManager from '@/components/AdminFacultyManager';
 import AdminNoticeForm from '@/components/AdminNoticeForm';
+import Logo from '@/components/Logo';
 
 const Admin = () => {
   const { isAuthenticated, login, logout } = useAuth();
@@ -43,8 +44,11 @@ const Admin = () => {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
         <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle className="text-2xl">Milton College Admin</CardTitle>
+          <CardHeader className="text-center">
+            <div className="flex justify-center mb-4">
+              <Logo />
+            </div>
+            <CardTitle className="text-2xl text-milton-blue">Admin Portal</CardTitle>
             <CardDescription>
               Login to access the admin dashboard
             </CardDescription>
@@ -81,7 +85,7 @@ const Admin = () => {
                   required
                 />
               </div>
-              <Button type="submit" className="w-full">Login</Button>
+              <Button type="submit" className="w-full bg-milton-blue hover:bg-milton-600 text-white">Login</Button>
             </form>
           </CardContent>
         </Card>
@@ -93,15 +97,26 @@ const Admin = () => {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Milton College Admin Dashboard</h1>
-          <Button variant="outline" onClick={handleLogout}>Logout</Button>
+          <div className="flex items-center gap-4">
+            <Logo />
+            <h1 className="text-3xl font-bold text-milton-blue">Admin Dashboard</h1>
+          </div>
+          <Button variant="outline" onClick={handleLogout} className="border-milton-blue text-milton-blue hover:bg-milton-blue/5">
+            Logout
+          </Button>
         </div>
 
         <Tabs defaultValue="faculty">
-          <TabsList className="mb-4">
-            <TabsTrigger value="notices">Manage Notices</TabsTrigger>
-            <TabsTrigger value="programs">Manage Programs</TabsTrigger>
-            <TabsTrigger value="faculty">Manage Faculty</TabsTrigger>
+          <TabsList className="mb-4 bg-milton-100">
+            <TabsTrigger value="notices" className="data-[state=active]:bg-milton-blue data-[state=active]:text-white">
+              Manage Notices
+            </TabsTrigger>
+            <TabsTrigger value="programs" className="data-[state=active]:bg-milton-blue data-[state=active]:text-white">
+              Manage Programs
+            </TabsTrigger>
+            <TabsTrigger value="faculty" className="data-[state=active]:bg-milton-blue data-[state=active]:text-white">
+              Manage Faculty
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="notices">

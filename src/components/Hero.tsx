@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-16">
       {/* Background with overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-milton-900/90 to-milton-800/80 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-milton-blue/95 to-milton-blue/85 z-10"></div>
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
@@ -32,7 +32,7 @@ const Hero = () => {
           
           <div className="pt-4 flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <Link to="/programs">
-              <Button size="lg" className="bg-white text-milton-800 hover:bg-white/90">
+              <Button size="lg" className="bg-milton-red hover:bg-milton-red/90 text-white">
                 Explore Programs 
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
