@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -15,7 +14,6 @@ const Navbar = () => {
   
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -25,7 +23,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
@@ -41,13 +38,12 @@ const Navbar = () => {
   return (
     <header className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+      isScrolled ? "bg-white shadow-sm" : "bg-white"
     )}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Logo />
           
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link 
@@ -77,7 +73,6 @@ const Navbar = () => {
             )}
           </nav>
           
-          {/* Mobile Menu Button */}
           <button 
             className="md:hidden focus:outline-none" 
             onClick={toggleMenu}
@@ -92,9 +87,8 @@ const Navbar = () => {
         </div>
       </div>
       
-      {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-sm border-b animate-fade-in">
+        <div className="md:hidden bg-white border-b animate-fade-in">
           <div className="container py-4">
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
